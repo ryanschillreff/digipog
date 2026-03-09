@@ -21,7 +21,7 @@ app.post('/submitpage', (req, res) => {
     // Get the data ready
     const payload = {
         from: req.body.from,
-        to: 88,
+        to: 90,
         amount: 50,
         reason: 'Testing...',
         pin: req.body.pin
@@ -40,7 +40,7 @@ app.post('/submitpage', (req, res) => {
                 req.session.destroy();
                 res.sendFile(path.join(__dirname, 'game.html'));
             } else {
-                res.send("You must pay before accessing the game.");
+                alert("You must pay before accessing the game.");
             }
 
         });
@@ -52,7 +52,7 @@ app.get('/game', (req, res) => {
     if (req.session.paid) {
         res.sendFile(path.join(__dirname, 'game.html'));
     } else {
-        res.send("ERROR: You are broke. Please go back and pay.");
+        res.alert("ERROR: You are broke. Please go back and pay.");
     }
 
 });
